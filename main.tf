@@ -1,7 +1,7 @@
 # Terraform configuration
 
 provider "aws" {
-  region = "us-west-2"
+  region = "ap-southeast-1"
 }
 
 module "vpc" {
@@ -25,12 +25,11 @@ module "ec2_instances" {
   version = "2.12.0"
 
   name           = "my-ec2-cluster"
-  instance_count = 2
+  instance_count = 1
 
-  ami                    = "ami-0c5204531f799e0c6"
+  ami                    = "ami-0f7719e8b7ba25c61"
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [module.vpc.default_security_group_id]
-  subnet_id              = module.vpc.public_subnets[0]
+  
 
   tags = {
     Terraform   = "true"
